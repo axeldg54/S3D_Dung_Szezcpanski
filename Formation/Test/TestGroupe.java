@@ -22,7 +22,7 @@ public class TestGroupe {
     }
 
     @Test
-    public void test_adjEtudiant_ok() throws FormationNotEqualsException {
+    public void test_adjEtudiant_ok() throws FormationNotEqualsException, EtudiantException {
         groupe.adjEtudiant(etudiant1);
     }
 }
