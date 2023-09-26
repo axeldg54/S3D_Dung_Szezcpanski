@@ -40,4 +40,12 @@ public class Etudiant extends HashMap {
     public HashMap<String, ArrayList<Double>> getResultas() {
         return resultas;
     }
+
+    public Identite getIdentite() {
+        return identite;
+    }
+
+    public Formation getFormation() {
+        return formation;
+    }
 }

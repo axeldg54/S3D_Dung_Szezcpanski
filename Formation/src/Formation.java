@@ -1,5 +1,5 @@
 import java.util.HashMap;
-import java.util.HashSet;
+import java.util.Objects;
 
 public class Formation {
 
@@ -39,5 +39,18 @@ public class Formation {
 
     public String getIdentifiant() {
         return identifiant;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Formation formation = (Formation) o;
+        return Objects.equals(identifiant, formation.identifiant) && Objects.equals(coefs, formation.coefs);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(identifiant, coefs);
     }
 }
