@@ -49,7 +49,26 @@ public class TestGroupe {
         boolean exception = false;
         try {
             groupe.adjEtudiant(etudiant1);
-        } catch (FormationNotEqualsException e) {
+        } catch (EtudiantException e) {
+            exception = true;
+        }
+        assertTrue(exception);
+    }
+
+    @Test
+    public void test_supEtudiant_ok() throws FormationNotEqualsException, EtudiantException {
+        groupe.adjEtudiant(etudiant1);
+        groupe.supEtudiant(etudiant1);
+        assertEquals(groupe.getEtudiants().size(), 0);
+    }
+
+    @Test
+    public void test_supEtudiant_EtudiantException() throws FormationNotEqualsException, EtudiantException {
+        groupe.adjEtudiant(etudiant1);
+        boolean exception = false;
+        try {
+            groupe.supEtudiant(etudiant2);
+        } catch (EtudiantException e) {
             exception = true;
         }
         assertTrue(exception);
