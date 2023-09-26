@@ -40,13 +40,8 @@ public class TestFormation {
 
     @Test
     public void test_avoirCoef_exception() {
-<<<<<<< HEAD
-        boolean exception = false;
-=======
         Formation formation = new Formation(identifiant);
->>>>>>> e62b7c9aca8fce0ba3d2339cf5710e6cce858bdd
         formation.ajouterFormation("Mathematiques", 5.0);
-
         assertThrows(MatiereNotFoundException.class, () -> {formation.avoirCoef("francais");});
     }
 }
