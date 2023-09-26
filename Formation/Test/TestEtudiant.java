@@ -1,7 +1,7 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class TestEtudiant {
     private Formation formation;
@@ -29,8 +29,8 @@ public class TestEtudiant {
         etudiant.adjNote("francais", 18);
 
 
-        assertEquals(etudiant.getResultas().size(), 2);
-        assertEquals(etudiant.getResultas().get("francais").size(), 2);
+        assertEquals(etudiant.getResultats().size(), 2);
+        assertEquals(etudiant.getResultats().get("francais").size(), 2);
 
     }
 
@@ -57,6 +57,15 @@ public class TestEtudiant {
         double moyenne = etudiant.calcMoyG();
 
         assertEquals(moyenne, 12.5);
+
+    }
+
+    @Test
+    public void test_adjNote_exception() throws NoteWrongIntervalException, MatiereNotFoundException {
+
+        MatiereNotFoundException exception = assertThrows(MatiereNotFoundException.class, () -> {etudiant.adjNote("espagnol", 7);});
+        NoteWrongIntervalException exception2 = assertThrows(NoteWrongIntervalException.class, () -> {etudiant.adjNote("maths", -1);});
+        NoteWrongIntervalException exception3 = assertThrows(NoteWrongIntervalException.class, () -> {etudiant.adjNote("maths", 21);});
 
     }
 
