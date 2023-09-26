@@ -29,10 +29,10 @@ public class Etudiant extends HashMap {
         return moy;
     }
 
-    public double calcMoyG() {
-        int moyg = 0;
+    public double calcMoyG() throws MatiereNotFoundException {
+        double moyg = 0;
         for (String m : resultas.keySet()) {
-            moyg += resultas.get(m) * formation.getCoefs().get(m);
+            moyg += calcMoy(m) * formation.getCoefs().get(m);
         }
         return moyg;
     }
