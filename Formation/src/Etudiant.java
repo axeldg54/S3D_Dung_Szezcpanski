@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Objects;
 
 public class Etudiant extends HashMap {
     private Identite identite;
@@ -53,5 +54,19 @@ public class Etudiant extends HashMap {
 
     public Formation getFormation() {
         return formation;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Etudiant etudiant = (Etudiant) o;
+        return Objects.equals(identite, etudiant.identite) && Objects.equals(resultas, etudiant.resultas) && Objects.equals(formation, etudiant.formation);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), identite, resultas, formation);
     }
 }
