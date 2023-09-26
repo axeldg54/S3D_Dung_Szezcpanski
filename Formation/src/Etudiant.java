@@ -58,11 +58,8 @@ public class Etudiant extends HashMap {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
-        Etudiant etudiant = (Etudiant) o;
-        return Objects.equals(identite, etudiant.identite) && Objects.equals(resultas, etudiant.resultas) && Objects.equals(formation, etudiant.formation);
+        if (o instanceof Etudiant) return identite.equals(((Etudiant)o).getIdentite());
+        return false;
     }
 
     @Override

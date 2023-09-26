@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class Identite {
     private String nip;
     private String nom;
@@ -9,5 +11,26 @@ public class Identite {
         this.prenom = prenom;
     }
 
+    public String getNip() {
+        return nip;
+    }
 
+    public String getNom() {
+        return nom;
+    }
+
+    public String getPrenom() {
+        return prenom;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o instanceof Identite) return ((Identite) o).getNip().equals(nip);
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nip, nom, prenom);
+    }
 }

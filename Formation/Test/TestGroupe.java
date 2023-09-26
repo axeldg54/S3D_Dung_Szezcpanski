@@ -1,7 +1,8 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.text.Normalizer;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class TestGroupe {
 
@@ -24,5 +25,33 @@ public class TestGroupe {
     @Test
     public void test_adjEtudiant_ok() throws FormationNotEqualsException, EtudiantException {
         groupe.adjEtudiant(etudiant1);
+        assertEquals(groupe.getEtudiants().size(), 1);
+        assertEquals(groupe.getEtudiants().get(0).getIdentite().getNip(), "N01");
+        assertEquals(groupe.getEtudiants().get(0).getIdentite().getNom(), "Dung");
+        assertEquals(groupe.getEtudiants().get(0).getIdentite().getPrenom(), "Axel");
+    }
+
+    @Test
+    public void test_adjEtudiant_FormationNotEqualsException() throws FormationNotEqualsException, EtudiantException {
+        groupe.adjEtudiant(etudiant1);
+        boolean exception = false;
+        try {
+            groupe.adjEtudiant(etudiant2);
+        } catch (FormationNotEqualsException e) {
+            exception = true;
+        }
+        assertTrue(exception);
+    }
+
+    @Test
+    public void test_adjEtudiant_EtudiantException() throws FormationNotEqualsException, EtudiantException {
+        groupe.adjEtudiant(etudiant1);
+        boolean exception = false;
+        try {
+            groupe.adjEtudiant(etudiant1);
+        } catch (FormationNotEqualsException e) {
+            exception = true;
+        }
+        assertTrue(exception);
     }
 }
