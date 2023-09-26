@@ -14,9 +14,15 @@ public class Etudiant extends HashMap {
     }
 
     public void adjNote (String matiere, double note) throws MatiereNotFoundException, NoteWrongIntervalException {
-        if (!resultas.containsKey(matiere)) throw new MatiereNotFoundException("erreur : matière non trouvée");
+        if (!formation.getCoefs().containsKey(matiere)) throw new MatiereNotFoundException("erreur : matière non trouvée");
         if (note > 20 || note < 0) throw new NoteWrongIntervalException("erreur : note doit se situer entre 0 et 20");
-        resultas.get(matiere).add(note);
+        if(resultas.containsKey(matiere)) {
+            resultas.get(matiere).add(note);
+        }else{
+            ArrayList<Double> tab = new ArrayList<>();
+            tab.add(note);
+            resultas.put(matiere, tab);
+        }
     }
 
     public double calcMoy(String matiere) throws MatiereNotFoundException{
@@ -34,7 +40,7 @@ public class Etudiant extends HashMap {
         for (String m : resultas.keySet()) {
             moyg += calcMoy(m) * formation.getCoefs().get(m);
         }
-        return moyg;
+        return moyg/resultas.keySet().size();
     }
 
     public HashMap<String, ArrayList<Double>> getResultas() {
