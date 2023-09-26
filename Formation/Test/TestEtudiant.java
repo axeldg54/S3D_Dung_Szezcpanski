@@ -63,9 +63,9 @@ public class TestEtudiant {
     @Test
     public void test_adjNote_exception() throws NoteWrongIntervalException, MatiereNotFoundException {
 
-        MatiereNotFoundException exception = assertThrows(MatiereNotFoundException.class, () -> {etudiant.adjNote("espagnol", 7);});
-        NoteWrongIntervalException exception2 = assertThrows(NoteWrongIntervalException.class, () -> {etudiant.adjNote("maths", -1);});
-        NoteWrongIntervalException exception3 = assertThrows(NoteWrongIntervalException.class, () -> {etudiant.adjNote("maths", 21);});
+        assertThrows(MatiereNotFoundException.class, () -> {etudiant.adjNote("espagnol", 7);});
+        assertThrows(NoteWrongIntervalException.class, () -> {etudiant.adjNote("maths", -1);});
+        assertThrows(NoteWrongIntervalException.class, () -> {etudiant.adjNote("maths", 21);});
 
     }
 

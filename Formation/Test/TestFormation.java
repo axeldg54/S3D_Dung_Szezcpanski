@@ -7,28 +7,27 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class TestFormation {
 
     private String identifiant;
+    private Formation formation;
 
     @BeforeEach
     public void init() {
         identifiant = "formation1";
+        formation = new Formation(identifiant);
     }
 
     @Test
     public void test_constructeur_ok() {
-        Formation formation = new Formation(identifiant);
         assertEquals(formation.getIdentifiant(), "formation1");
     }
 
     @Test
     public void test_ajouterFormation_ok() {
-        Formation formation = new Formation(identifiant);
         formation.ajouterFormation("Mathematiques", 5.0);
         assertEquals(formation.getCoefs().get("Mathematiques"), 5.0);
     }
 
     @Test
     public void test_supprimerFormation_ok() {
-        Formation formation = new Formation(identifiant);
         formation.ajouterFormation("Mathematiques", 5.0);
         formation.supprimerFormation("Mathematiques");
         assertEquals(formation.getCoefs().size(), 0);
@@ -36,14 +35,12 @@ public class TestFormation {
 
     @Test
     public void test_avoirCoef_ok() throws MatiereNotFoundException {
-        Formation formation = new Formation(identifiant);
         formation.ajouterFormation("Mathematiques", 5.0);
         assertEquals(formation.avoirCoef("Mathematiques"), 5.0);
     }
 
     @Test
     public void test_avoirCoef_exception() {
-        Formation formation = new Formation(identifiant);
         boolean exception = false;
         formation.ajouterFormation("Mathematiques", 5.0);
         try {
