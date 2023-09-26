@@ -26,7 +26,7 @@ public class Formation {
     public Double avoirCoef(String matiere) throws MatiereNotFoundException{
         Double valeur;
         if (!this.coefs.containsKey(matiere)){
-            throw new MatiereNotFoundException("Matiere introuvable");
+            throw new MatiereNotFoundException("erreur : matière non trouvée");
         }else{
             valeur = this.coefs.get(matiere);
         }
@@ -35,5 +35,9 @@ public class Formation {
 
     public HashMap<String, Double> getCoefs() {
         return coefs;
+    }
+
+    public String getIdentifiant() {
+        return identifiant;
     }
 }
