@@ -5,14 +5,14 @@ public class Formation {
 
     private String identifiant;
 
-    private HashMap<String, Integer> coefs;
+    private HashMap<String, Double> coefs;
 
     public  Formation(String id){
         this.identifiant = id;
-        this.coefs = new HashMap<String, Integer>();
+        this.coefs = new HashMap<String, Double>();
     }
 
-    public void ajouterFormation(String matiere, int coef){
+    public void ajouterFormation(String matiere, Double coef){
         if(!this.coefs.containsKey(matiere)){
             this.coefs.put(matiere, coef);
         }
@@ -23,8 +23,8 @@ public class Formation {
         this.coefs.remove(matiere);
     }
 
-    public int avoirCoef(String matiere) throws MatiereNotFoundException{
-        int valeur = 0;
+    public Double avoirCoef(String matiere) throws MatiereNotFoundException{
+        Double valeur;
         if (!this.coefs.containsKey(matiere)){
             throw new MatiereNotFoundException("Matiere introuvable");
         }else{
@@ -33,7 +33,7 @@ public class Formation {
         return valeur;
     }
 
-    public HashMap<String, Integer> getCoefs() {
+    public HashMap<String, Double> getCoefs() {
         return coefs;
     }
 }
