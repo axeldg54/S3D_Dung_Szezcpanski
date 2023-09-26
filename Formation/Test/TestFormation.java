@@ -1,8 +1,7 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class TestFormation {
 
@@ -41,13 +40,13 @@ public class TestFormation {
 
     @Test
     public void test_avoirCoef_exception() {
+<<<<<<< HEAD
         boolean exception = false;
+=======
+        Formation formation = new Formation(identifiant);
+>>>>>>> e62b7c9aca8fce0ba3d2339cf5710e6cce858bdd
         formation.ajouterFormation("Mathematiques", 5.0);
-        try {
-            formation.avoirCoef("Francais");
-        } catch (MatiereNotFoundException e) {
-            exception = true;
-        }
-        assertTrue(exception);
+
+        assertThrows(MatiereNotFoundException.class, () -> {formation.avoirCoef("francais");});
     }
 }

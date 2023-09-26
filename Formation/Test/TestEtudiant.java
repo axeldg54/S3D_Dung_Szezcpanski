@@ -17,6 +17,7 @@ public class TestEtudiant {
         formation = new Formation(identifiant);
         formation.ajouterFormation("maths", 1.0);
         formation.ajouterFormation("francais", 1.0);
+        formation.ajouterFormation("EPS", 0.5);
         identite = new Identite("01", "Dung", "Axel");
         etudiant = new Etudiant(identite, formation);
     }
@@ -27,9 +28,11 @@ public class TestEtudiant {
         etudiant.adjNote("maths", 10);
         etudiant.adjNote("francais", 8);
         etudiant.adjNote("francais", 18);
+        etudiant.adjNote("EPS", 20);
 
 
-        assertEquals(etudiant.getResultats().size(), 2);
+
+        assertEquals(etudiant.getResultats().size(), 3);
         assertEquals(etudiant.getResultats().get("francais").size(), 2);
 
     }
