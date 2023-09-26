@@ -36,4 +36,8 @@ public class Etudiant extends HashMap {
         }
         return moyg;
     }
+
+    public HashMap<String, ArrayList<Double>> getResultas() {
+        return resultas;
+    }
 }
