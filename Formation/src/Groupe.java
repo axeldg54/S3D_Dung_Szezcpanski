@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class Groupe {
     private ArrayList<Etudiant> etudiants;
@@ -19,6 +21,28 @@ public class Groupe {
     public void supEtudiant(Etudiant e) throws EtudiantException {
         if (!etudiants.contains(e)) throw new EtudiantException("erreur : etudiant introuvable");
         etudiants.remove(e);
+    }
+
+    public void triAlpha() {
+        Collections.sort(etudiants, new Comparator<Etudiant>() {
+            @Override
+            public int compare(Etudiant etudiant1, Etudiant etudiant2) {
+                String nom1 = etudiant1.getIdentite().getNom();
+                String nom2 = etudiant2.getIdentite().getNom();
+                return nom1.compareTo(nom2);
+            }
+        });
+    }
+
+    public void triAntiAlpha() {
+        Collections.sort(etudiants, new Comparator<Etudiant>() {
+            @Override
+            public int compare(Etudiant etudiant1, Etudiant etudiant2) {
+                String nom1 = etudiant1.getIdentite().getNom();
+                String nom2 = etudiant2.getIdentite().getNom();
+                return nom2.compareTo(nom1);
+            }
+        });
     }
 
     public ArrayList<Etudiant> getEtudiants() {
