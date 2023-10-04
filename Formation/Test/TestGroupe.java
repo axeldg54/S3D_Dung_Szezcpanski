@@ -21,6 +21,7 @@ public class TestGroupe {
         etudiant1 = new Etudiant(identite1, formation1);
         etudiant2 = new Etudiant(identite2, formation2);
         etudiant3 = new Etudiant(identite3, formation1);
+
     }
 
     @Test

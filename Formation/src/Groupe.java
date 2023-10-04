@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class Groupe {
     private ArrayList<Etudiant> etudiants;
@@ -21,6 +23,7 @@ public class Groupe {
         etudiants.remove(e);
     }
 
+<<<<<<< HEAD
     public double calcMoy(String matiere) throws MatiereNotFoundException {
         double total = 0;
         for (Etudiant e : etudiants) {
@@ -35,6 +38,28 @@ public class Groupe {
             total += e.calcMoyG();
         }
         return total/etudiants.size();
+=======
+    public void triAlpha() {
+        Collections.sort(etudiants, new Comparator<Etudiant>() {
+            @Override
+            public int compare(Etudiant etudiant1, Etudiant etudiant2) {
+                String nom1 = etudiant1.getIdentite().getNom();
+                String nom2 = etudiant2.getIdentite().getNom();
+                return nom1.compareTo(nom2);
+            }
+        });
+    }
+
+    public void triAntiAlpha() {
+        Collections.sort(etudiants, new Comparator<Etudiant>() {
+            @Override
+            public int compare(Etudiant etudiant1, Etudiant etudiant2) {
+                String nom1 = etudiant1.getIdentite().getNom();
+                String nom2 = etudiant2.getIdentite().getNom();
+                return nom2.compareTo(nom1);
+            }
+        });
+>>>>>>> 209176bfc0c1cf28ba1ce3843f1917581a094cf2
     }
 
     public ArrayList<Etudiant> getEtudiants() {
