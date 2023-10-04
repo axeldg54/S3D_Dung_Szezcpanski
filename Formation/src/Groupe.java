@@ -21,6 +21,22 @@ public class Groupe {
         etudiants.remove(e);
     }
 
+    public double calcMoy(String matiere) throws MatiereNotFoundException {
+        double total = 0;
+        for (Etudiant e : etudiants) {
+            total += e.calcMoy(matiere);
+        }
+        return total/etudiants.size();
+    }
+
+    public double calcMoyG() throws MatiereNotFoundException {
+        double total = 0;
+        for (Etudiant e : etudiants) {
+            total += e.calcMoyG();
+        }
+        return total/etudiants.size();
+    }
+
     public ArrayList<Etudiant> getEtudiants() {
         return etudiants;
     }

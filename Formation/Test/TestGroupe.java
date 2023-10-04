@@ -63,4 +63,31 @@ public class TestGroupe {
         groupe.adjEtudiant(etudiant1);
         assertThrows(EtudiantException.class, () -> {groupe.supEtudiant(etudiant2);});
     }
+
+    @Test
+    public void test_calcMoy_ok() throws NoteWrongIntervalException, MatiereNotFoundException, FormationNotEqualsException, EtudiantException {
+        formation1.ajouterFormation("Math", 1.0);
+        etudiant1.adjNote("Math", 15);
+        etudiant1.adjNote("Math", 10);
+        etudiant3.adjNote("Math", 10);
+        etudiant3.adjNote("Math", 5);
+        groupe.adjEtudiant(etudiant1);
+        groupe.adjEtudiant(etudiant3);
+        assertEquals(groupe.calcMoy("Math"), 10);
+    }
+
+    @Test
+    public void test_calcMoyG_ok() throws NoteWrongIntervalException, MatiereNotFoundException, FormationNotEqualsException, EtudiantException {
+        formation1.ajouterFormation("Math", 1.0);
+        formation1.ajouterFormation("Francais", 2.0);
+        etudiant1.adjNote("Math", 15);
+        etudiant1.adjNote("Math", 10);
+        etudiant1.adjNote("Francais", 20);
+        etudiant3.adjNote("Math", 10);
+        etudiant3.adjNote("Math", 5);
+        etudiant1.adjNote("Francais", 15);
+        groupe.adjEtudiant(etudiant1);
+        groupe.adjEtudiant(etudiant3);
+        assertEquals(groupe.calcMoyG(), 15.625);
+    }
 }
